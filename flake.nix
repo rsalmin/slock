@@ -11,7 +11,8 @@
         pkgs = import nixpkgs { system = "x86_64-linux"; };
       in
         pkgs.stdenv.mkDerivation {
-          name = "slock";
+          pname = "slock";
+          version = "1.4";
           src = self;
           buildPhase = "make";
           installPhase = "mkdir -p $out/bin; install -t $out/bin slock";
