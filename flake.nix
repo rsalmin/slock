@@ -5,7 +5,7 @@
 
   outputs = { self, nixpkgs }: {
 
-    packages.x86_64-linux.default =
+    packages.x86_64-linux.slock =
       # Notice the reference to nixpkgs here.
       let
         pkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -19,6 +19,8 @@
           nativeBuildInputs = with pkgs.xorg; [ xorgproto libX11 libXext libXrandr ];
 
         };
+
+    packages.x86_64-linux.default = self.packages.x86_64-linux.slock;
 
   };
 }
