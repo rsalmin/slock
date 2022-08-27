@@ -22,5 +22,10 @@
 
     packages.x86_64-linux.default = self.packages.x86_64-linux.slock;
 
+    apps.x86_64-linux.default = {
+      type = "app";
+      program = "${self.packages.x86_64-linux.default}/bin/slock";
+    };
+
   };
 }
