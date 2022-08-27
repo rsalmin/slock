@@ -14,10 +14,12 @@
           pname = "slock";
           version = "1.4";
           src = self;
-          buildPhase = "make";
-          installPhase = "mkdir -p $out/bin; install -t $out/bin slock";
 
-          nativeBuildInputs = with pkgs.xorg; [ xorgproto libX11 libXext libXrandr ];
+          installFlags = [ "PREFIX=$(out)" ];
+          postPatch = "sed -i '/chmod u+s/d' Makefile";
+          makeFlags = [ "CC:=$(CC)" ];
+
+          buildInputs = with pkgs.xorg; [ xorgproto libX11 libXext libXrandr ];
 
         };
 
@@ -29,4 +31,5 @@
     };
 
   };
+
 }
